@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Soda Crazy</string>
+    <string name="punchButton">Button</string>
 </resources>
