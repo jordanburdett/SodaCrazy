@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".AddPunchActivity">
 
+    <!--where our camera will show up-->
     <SurfaceView
         android:id="@+id/cameraPreview"
         android:layout_width="match_parent"
@@ -15,6 +16,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp" />
 
+    <!--Textview for important information-->
     <TextView
         android:id="@+id/txtview"
         android:layout_width="match_parent"
