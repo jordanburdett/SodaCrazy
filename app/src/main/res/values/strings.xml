@@ -2,7 +2,8 @@
     <string name="app_name">Soda Crazy</string>
     <string name="punchButton">Button</string>
     <string name="beverage_type_prompt">Select a beverage</string>
-    
+    <string name="soda_crazy_banner">Soda Crazy Banner</string>
+
     <string-array name="beverage_types">
         <item>Italian Soda</item>
         <item>Coffee or Espresso</item>
