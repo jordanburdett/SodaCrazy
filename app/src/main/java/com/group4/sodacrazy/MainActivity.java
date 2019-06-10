@@ -27,4 +27,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, PunchCardActivity.class);
         startActivity(intent);
     }
+
+    public void toBuild(View view) {
+        Intent intent = new Intent(this, BuildActivity.class);
+        startActivity(intent);
+    }
 }
