@@ -10,44 +10,28 @@
         android:id="@+id/punchCard_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="8dp"
         android:onClick="toPunch"
-        android:text="@string/punchButton"
-        app:layout_constraintEnd_toStartOf="@+id/build_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_banner" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="395dp"
-        android:layout_height="490dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/image_banner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/soda_crazy_banner"
+        android:text="Go to Punch Card"
+        app:layout_constraintBottom_toTopOf="@+id/build_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/menu_banner" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/build_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:onClick="toBuild"
-        android:text="@string/build_a_drink"
+        android:text="Go To Build Menu"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/punchCard_button"
-        app:layout_constraintTop_toBottomOf="@+id/image_banner" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

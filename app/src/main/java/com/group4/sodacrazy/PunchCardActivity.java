@@ -69,6 +69,8 @@ public class PunchCardActivity extends Activity {
             //RESULT_OK is passed back from the other activity
             if(resultCode == RESULT_OK) {
                 txtView = findViewById(R.id.textView);
+
+                //get information that was passed back from the activity
                 punches += data.getIntExtra("Punch", 0);
 
                 //this is temporary--just to show a countdown
