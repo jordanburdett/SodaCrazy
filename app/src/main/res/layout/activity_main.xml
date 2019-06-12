@@ -8,29 +8,16 @@
 
     <Button
         android:id="@+id/punchCard_button"
-        android:layout_width="125dp"
+        android:layout_width="0dp"
         android:layout_height="32dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="4dp"
         android:background="#202020"
         android:onClick="toPunch"
         android:text="@string/punchButton"
         android:textColor="#FCFDFA"
-        app:layout_constraintBottom_toBottomOf="@+id/blackBar"
         app:layout_constraintStart_toStartOf="@+id/blackBar"
         app:layout_constraintTop_toTopOf="@+id/blackBar" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="395dp"
-        android:layout_height="490dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/blackBar">
-
-    </androidx.recyclerview.widget.RecyclerView>
 
     <ImageView
         android:id="@+id/image_banner"
@@ -45,41 +32,50 @@
 
     <ImageView
         android:id="@+id/blackBar"
-        android:layout_width="418dp"
+        android:layout_width="0dp"
         android:layout_height="40dp"
+        android:layout_marginStart="-5dp"
+        android:layout_marginEnd="-5dp"
         android:contentDescription="@string/todo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_banner"
         app:srcCompat="@color/colorAccent" />
 
     <Button
         android:id="@+id/build_button"
-        android:layout_width="125dp"
+        android:layout_width="0dp"
         android:layout_height="32dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="44dp"
         android:background="#202020"
         android:onClick="toBuild"
         android:text="@string/build_a_drink"
         android:textColor="#FAFDFB"
-        app:layout_constraintBottom_toBottomOf="@+id/blackBar"
         app:layout_constraintEnd_toEndOf="@+id/blackBar"
         app:layout_constraintTop_toTopOf="@+id/blackBar" />
 
     <Button
         android:id="@+id/menuButton"
-        android:layout_width="125dp"
+        android:layout_width="0dp"
         android:layout_height="32dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:background="#202020"
         android:onClick="toMenu"
         android:text="@string/menu"
         android:textColor="#FCFDFA"
-        app:layout_constraintBottom_toBottomOf="@+id/blackBar"
         app:layout_constraintEnd_toStartOf="@+id/build_button"
         app:layout_constraintStart_toEndOf="@+id/punchCard_button"
         app:layout_constraintTop_toTopOf="@+id/blackBar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="508dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/blackBar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
