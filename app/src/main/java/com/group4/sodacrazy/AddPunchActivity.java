@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
@@ -28,15 +29,29 @@ public class AddPunchActivity extends AppCompatActivity {
     TextView txtView; //display text (eventually might have instructions or something)
     BarcodeDetector detector; //so we can read barcodes. This is part of the google play services thing
 
+    String purpose;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_punch);
 
-        Intent intent = getIntent(); //I don't know if this does anything for us
+        txtView = (TextView) findViewById(R.id.txtview);
+
+
+        //if camera permissions have been denied, instruct user to allow them
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            txtView.setText("Please Allow Camera Permissions: Settings > Apps > SodaCrazy > Permissions\nThen return to this page");
+        }
+
+
+        Intent intent = getIntent();
+        purpose = intent.getStringExtra("purpose"); //this will be either "punch" or "redeem"
+
 
         surfaceView = (SurfaceView) findViewById(R.id.cameraPreview);
-        txtView = (TextView) findViewById(R.id.txtview);
 
         //make a detector that will look for qr codes
         detector = new BarcodeDetector.Builder(getApplicationContext())
@@ -92,9 +107,9 @@ public class AddPunchActivity extends AppCompatActivity {
                     txtView.post(new Runnable() {
                         @Override
                         public void run() { //Ok. I DO NOT want to do anything with a textview. I'll fix this later.
-                            txtView.setText(qrCodes.valueAt(0).rawValue); // yeah this will def change
-                            //if the 1st (usually only) qr code on the screen matches the secret code...
-                            if (qrCodes.valueAt(0).rawValue.equals("soda34234298432075892780324932849038249032890483290crazy")) {
+                            //if the 1st (usually only) qr code on the screen matches the secret code for add punch
+                            //AND the purpose is to add a punch
+                            if (purpose.equals("punch") && qrCodes.valueAt(0).rawValue.equals("soda34234298432075892780324932849038249032890483290crazy")) {
                                 //vibrate a bit to let the user know it worked
                                 Vibrator vibrator = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
                                 vibrator.vibrate(100);
@@ -104,6 +119,26 @@ public class AddPunchActivity extends AppCompatActivity {
                                 //give information back to the activity that called this one
                                 Intent output = new Intent();
                                 output.putExtra("Punch", 1); //right now this will always be 1
+                                setResult(RESULT_OK, output); //say things went well, pass back the intent
+
+                                //exit this activity (and return to the one that called it)
+                                finish();
+                            }
+
+                            //if the 1st (usually only) qr code on the screen matches the secret code for drink redeem
+                            //AND the purpose is to redeem a drink
+                            else if (purpose.equals("redeem") && qrCodes.valueAt(0).rawValue.equals("soda383984932084930843209REDEEM3484fdf9384903849302crazy")) {
+
+                                //stop the camera source (this might not be necessary)
+                                cameraSource.stop();
+
+                                //vibrate a bit to let the user know it worked
+                                Vibrator vibrator = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+                                vibrator.vibrate(100);
+
+                                //give information back to the activity that called this one
+                                Intent output = new Intent();
+                                output.putExtra("Redeem", 1); //right now this will always be 1
                                 setResult(RESULT_OK, output); //say things went well, pass back the intent
 
                                 //exit this activity (and return to the one that called it)
