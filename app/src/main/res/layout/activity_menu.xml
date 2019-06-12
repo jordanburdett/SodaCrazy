@@ -20,30 +20,66 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
+            <!--banner-->
             <ImageView
                 android:id="@+id/imageView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 app:srcCompat="@drawable/menu_banner" />
+
+
+            <!--This is for the menu to be inserted. It needs a horizontal linear layout because it's
+            inside the vertical linear layout (so the constraint stuff doesn't work)
+            This should be changed to look like the menu on the main page (but for now I was just
+            testing functionality)-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="toPunch"
+                    android:text="Punch" />
+
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="toBuild"
+                    android:text="Build" />
+            </LinearLayout>
+
+            <!--italian ice portion of menu-->
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 app:srcCompat="@drawable/menu_italian_ice" />
+
+            <!--drinks portion of menu-->
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 app:srcCompat="@drawable/menu_drinks" />
+
+            <!--kids' drinks portion of menu-->
             <ImageView
                 android:id="@+id/imageView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 app:srcCompat="@drawable/menu_kids" />
+
+            <!--coffee and espresso portion of menu-->
             <ImageView
                 android:id="@+id/imageView5"
                 android:layout_width="match_parent"
