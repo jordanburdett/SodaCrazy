@@ -8,6 +8,7 @@
     <string name="go_to_build_menu">Go To Build Menu</string>
     <string name="todo">TODO</string>
     <string name="menu">Menu</string>
+    <string name="home">Home</string>
 
 
     <string-array name="beverage_types">

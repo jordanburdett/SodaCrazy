@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ public class PunchCardActivity extends Activity {
     int redeemable;
     TextView txtView; //number of punches left for a free drink
     TextView txtView2; //number of redeemable drinks
+    ImageView imgView;
 
     SharedPreferences prefs;
     @Override
@@ -39,6 +41,11 @@ public class PunchCardActivity extends Activity {
 
         txtView.setText("Punches Remaining: " + (10 - (prefs.getInt("TotalPunches", 0))));
         txtView2.setText("Redeemable Drinks: " + prefs.getInt("RedeemableDrinks", 0));
+
+        imgView = findViewById(R.id.cupcake);
+
+        //update the fill-up italian ice image
+        setImage();
 
         //ask for permissions if not already granted
         if (ContextCompat.checkSelfPermission(this,
@@ -132,6 +139,70 @@ public class PunchCardActivity extends Activity {
                 txtView.setText("Punches Remaining: " + (10 - (prefs.getInt("TotalPunches", 0))));
                 txtView2.setText("Redeemable Drinks: " + prefs.getInt("RedeemableDrinks", 0));
 
+                //update the fill-up italian ice image
+                setImage();
+            }
+        }
+    }
+
+    public void toMain(View view) {
+        finish();
+    }
+
+    public void toBuild(View view) {
+        Intent intent = new Intent(this, BuildActivity.class);
+        startActivity(intent);
+    }
+
+    public void toMenu(View view) {
+        Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
+    }
+
+
+    /***
+     * This will set the image based on how many punches/redeemable cards the user has
+     * */
+    public void setImage() {
+
+        //if able to be redeemed, full image will appear
+        if(redeemable >= 1) {
+            imgView.setImageResource(R.drawable.ice1010);
+        }
+
+        //otherwise, it will be based on the number of punches (0-9, 0 is default)
+        else {
+            switch (punches)
+            {
+                case 1:
+                    imgView.setImageResource(R.drawable.ice0110);
+                    break;
+                case 2:
+                    imgView.setImageResource(R.drawable.ice0210);
+                    break;
+                case 3:
+                    imgView.setImageResource(R.drawable.ice0310);
+                    break;
+                case 4:
+                    imgView.setImageResource(R.drawable.ice0410);
+                    break;
+                case 5:
+                    imgView.setImageResource(R.drawable.ice0510);
+                    break;
+                case 6:
+                    imgView.setImageResource(R.drawable.ice0610);
+                    break;
+                case 7:
+                    imgView.setImageResource(R.drawable.ice0710);
+                    break;
+                case 8:
+                    imgView.setImageResource(R.drawable.ice0810);
+                    break;
+                case 9:
+                    imgView.setImageResource(R.drawable.ice0910);
+                    break;
+                default: //if it's 0
+                    imgView.setImageResource(R.drawable.ice0010);
             }
         }
     }
