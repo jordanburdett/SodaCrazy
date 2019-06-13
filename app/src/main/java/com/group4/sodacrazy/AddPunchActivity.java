@@ -125,8 +125,8 @@ public class AddPunchActivity extends AppCompatActivity {
                                 finish();
                             }
 
-                            //if the 1st (usually only) qr code on the screen matches the secret code for drink redeem
-                            //AND the purpose is to redeem a drink
+                            //if the 1st (usually only) qr code on the screen matches the secret code for italian ice redeem
+                            //AND the purpose is to redeem an italian ice
                             else if (purpose.equals("redeem") && qrCodes.valueAt(0).rawValue.equals("soda383984932084930843209REDEEM3484fdf9384903849302crazy")) {
 
                                 //stop the camera source (this might not be necessary)
