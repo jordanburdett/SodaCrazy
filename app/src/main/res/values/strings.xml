@@ -9,6 +9,8 @@
     <string name="todo">TODO</string>
     <string name="menu">Menu</string>
     <string name="home">Home</string>
+    <string name="punch">Punch</string>
+    <string name="build">Build</string>
 
 
     <string-array name="beverage_types">

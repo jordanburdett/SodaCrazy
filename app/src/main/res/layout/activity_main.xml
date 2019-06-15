@@ -71,6 +71,7 @@
         app:layout_constraintTop_toTopOf="@+id/blackBar" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/FlavorView"
         android:layout_width="0dp"
         android:layout_height="508dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -1,6 +1,7 @@
 package com.group4.sodacrazy;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -11,10 +12,19 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
+    private FlavorAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        recyclerView = findViewById(R.id.FlavorView);
+        recyclerView.setHasFixedSize(true);
+        adapter = new FlavorAdapter(this);
+        recyclerView.setAdapter(adapter);
 
     }
 
