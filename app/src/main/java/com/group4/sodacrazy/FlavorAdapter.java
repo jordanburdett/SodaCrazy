@@ -1,15 +1,19 @@
 package com.group4.sodacrazy;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import androidx.annotation.NonNull;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+
 
 public class FlavorAdapter extends RecyclerView.Adapter<FlavorAdapter.ViewHolder> {
 
@@ -33,18 +37,30 @@ public class FlavorAdapter extends RecyclerView.Adapter<FlavorAdapter.ViewHolder
     public FlavorAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(
-                R.layout.
-        )
-        return null;
+                R.layout.flavor_list_layout, parent, false);
+        ViewHolder holder = new ViewHolder(view);
+        return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FlavorAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
+
+        holder.tvflavor.setText(data.get(position));
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return data.size();
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+
+        TextView tvflavor;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            tvflavor = itemView.findViewById(R.id.tv_flavor);
+        }
     }
 }

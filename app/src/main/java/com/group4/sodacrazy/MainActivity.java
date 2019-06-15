@@ -1,6 +1,7 @@
 package com.group4.sodacrazy;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -9,6 +10,9 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +29,20 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         adapter = new FlavorAdapter(this);
         recyclerView.setAdapter(adapter);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
 
+
+        List<String> test = new ArrayList<String>();
+
+        //Just testing the recycler view
+        for (int i = 0; i < 100; i++) {
+            String temp = "sodaCrazy " + i;
+            test.add(temp);
+        }
+
+        adapter.setData(test);
+        adapter.notifyDataSetChanged();
     }
 
     /**

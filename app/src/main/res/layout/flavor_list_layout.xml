@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:focusable="true"
-    android:foreground="@android:color/white">
+    android:foreground="?android:attr/selectableItemBackground">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,11 +15,11 @@
             android:id="@+id/tv_flavor"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="false"
-            android:text="Flavors"
+            android:text="@string/flavors"
             android:visibility="visible" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

@@ -11,6 +11,7 @@
     <string name="home">Home</string>
     <string name="punch">Punch</string>
     <string name="build">Build</string>
+    <string name="flavors">Flavors</string>
 
 
     <string-array name="beverage_types">
