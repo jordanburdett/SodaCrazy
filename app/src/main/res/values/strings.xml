@@ -19,4 +19,8 @@
         <item>Coffee or Espresso</item>
         <item>Hot Chocolate</item>
     </string-array>
+    <string name="add_punch_button">Add Punch</string>
+    <string name="redeem_punches_button">Redeem</string>
+    <string name="punch_image_des">A delicious Italian Ice</string>
+    <string name="qrcode_scan_instructions">Focus on QR Code</string>
 </resources>
