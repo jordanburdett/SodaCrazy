@@ -1,15 +1,13 @@
 package com.group4.sodacrazy;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, 0));
 
         List<String> test = new ArrayList<String>();
 
@@ -44,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.setData(test);
         adapter.notifyDataSetChanged();
     }
+
 
     /**
      * This is for testing the punch card stuff. It can be changed to whatever menu thing we have.
