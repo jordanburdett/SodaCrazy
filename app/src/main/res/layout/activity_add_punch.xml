@@ -21,10 +21,10 @@
         android:id="@+id/txtview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/cameraPreview"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="Focus on QR Code"
-        android:textSize="18sp"
-        android:layout_below="@+id/cameraPreview" />
+        android:text="@string/qrcode_scan_instructions"
+        android:textSize="18sp" />
 
 </RelativeLayout>
