@@ -1,7 +1,6 @@
 package com.group4.sodacrazy;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,26 +28,34 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, 0));
 
-        List<String> test = new ArrayList<String>();
 
-        //Just testing the recycler view
-        for (int i = 0; i < 100; i++) {
-            String temp = "sodaCrazy " + i;
-            test.add(temp);
+
+        //this will be a list of flavor names (not colors at this time)
+        List<String> values = new ArrayList<>();
+
+        //this activity will call the google API when we do the thread
+        FlavorGetter flavors = new FlavorGetter((ArrayList<String>)values);
+
+        //start the thread
+        Thread thread = new Thread(flavors, "Get Flavors");
+        thread.start();
+        try {
+            thread.join(); //this is a waiting thing that may or may not be smart to use
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
 
-        adapter.setData(test);
-        adapter.notifyDataSetChanged();
+        //this is putting the flavor names into the recyclerView. No colors right now (they're in the FlavorItem though)
+        adapter.setData(values);
+            adapter.notifyDataSetChanged();
     }
-
 
     /**
      * This is for testing the punch card stuff. It can be changed to whatever menu thing we have.
      * Just make sure that whatever button is supposed to go to the punch card screen does this
      * method.
-     * **/
+     **/
     public void toPunch(View view) {
         Intent intent = new Intent(this, PunchCardActivity.class);
         startActivity(intent);
@@ -63,4 +70,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MenuActivity.class);
         startActivity(intent);
     }
+
 }

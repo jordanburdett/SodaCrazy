@@ -70,10 +70,25 @@
         app:layout_constraintStart_toEndOf="@+id/punchCard_button"
         app:layout_constraintTop_toTopOf="@+id/blackBar" />
 
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/FlavorView"
+        app:layout_constraintEnd_toEndOf="@+id/FlavorView"
+        app:layout_constraintStart_toStartOf="@+id/FlavorView"
+        app:layout_constraintTop_toTopOf="@+id/FlavorView"
+        app:srcCompat="@drawable/seal" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/FlavorView"
         android:layout_width="0dp"
-        android:layout_height="508dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="#1BFFFFFF"
+        android:foregroundGravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

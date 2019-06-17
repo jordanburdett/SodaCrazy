@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#02FFFFFF"
     android:focusable="true"
-    android:foreground="?android:attr/selectableItemBackground">
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardBackgroundColor="#BCFFFFFF">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
         android:padding="16dp">
 
         <TextView
@@ -19,7 +23,12 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="false"
+            android:background="#00FFFFFF"
+            android:fontFamily="casual"
+            android:gravity="center"
             android:text="@string/flavors"
+            android:textSize="24sp"
+            android:textStyle="bold"
             android:visibility="visible" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
