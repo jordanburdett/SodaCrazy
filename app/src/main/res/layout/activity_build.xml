@@ -5,24 +5,6 @@
     android:orientation="vertical">
 
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="538dp">
-
-        <Spinner
-            android:id="@+id/beverage_type"
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:entries="@array/beverage_types"
-            android:prompt="@string/beverage_type_prompt"
-            android:spinnerMode="dropdown" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
-
     <EditText
         android:id="@+id/editText2"
         android:layout_width="wrap_content"
