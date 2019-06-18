@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 
@@ -37,13 +40,27 @@ public class MainActivity extends AppCompatActivity {
         //this activity will call the google API when we do the thread
         FlavorGetter flavors = new FlavorGetter((ArrayList<String>)values);
 
-        //start the thread
-        Thread thread = new Thread(flavors, "Get Flavors");
-        thread.start();
-        try {
-            thread.join(); //this is a waiting thing that may or may not be smart to use
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+
+        //check to see if connected to the internet
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+            //start the thread
+            Thread thread = new Thread(flavors, "Get Flavors");
+            thread.start();
+            try {
+                //this could have problems if internet connection is lost during the thread (or if there
+                //is a problem connecting to the api) A better way to do it might be a start activity for result
+                //(like how PunchCardActivity starts AddPunchActivity)
+                thread.join(); //this is a waiting thing that may or may not be smart to use
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            //a temporary message until we get a better alternative (read from a file or something)
+            values.add("Can't Connect to the Internet");
         }
 
         //this is putting the flavor names into the recyclerView. No colors right now (they're in the FlavorItem though)
