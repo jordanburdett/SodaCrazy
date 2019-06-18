@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Soda Crazy</string>
     <string name="punchButton">PunchCard</string>
-    <string name="beverage_type_prompt">Select a beverage</string>
     <string name="soda_crazy_banner">Soda Crazy Banner</string>
     <string name="build_a_drink">Build A Drink....</string>
     <string name="go_to_punch_card">Go to Punch Card</string>
@@ -15,12 +14,21 @@
 
 
     <string-array name="beverage_types">
+        <item>Select a beverage...</item>
         <item>Italian Soda</item>
         <item>Coffee or Espresso</item>
         <item>Hot Chocolate</item>
+    </string-array>
+    <string-array name="beverage_size">
+        <item>Select a size...</item>
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
     </string-array>
     <string name="add_punch_button">Add Punch</string>
     <string name="redeem_punches_button">Redeem</string>
     <string name="punch_image_des">A delicious Italian Ice</string>
     <string name="qrcode_scan_instructions">Focus on QR Code</string>
+    <string name="flavor_view_des">List of flavors</string>
+    <string name="seal_des">Adorable Baby Seal</string>
 </resources>

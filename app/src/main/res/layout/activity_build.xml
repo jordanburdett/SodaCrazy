@@ -4,27 +4,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <Spinner
+        android:id="@+id/beverage_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:entries="@array/beverage_types" />
 
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="65dp"
-        android:layout_weight="1"
-        android:baselineAligned="true"
-        android:editable="false"
-        android:ems="10"
-        android:gravity="right"
-        android:inputType="numberDecimal" />
-
-    <EditText
-        android:id="@+id/drink_price"
-        android:layout_width="150dp"
-        android:layout_height="80dp"
-        android:layout_weight="1"
-        android:clickable="false"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Price: "
-        android:textSize="30sp" />
-
+    <Spinner
+        android:id="@+id/size_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:entries="@array/beverage_size" />
 </LinearLayout>
