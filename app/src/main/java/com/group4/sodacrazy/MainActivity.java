@@ -37,15 +37,13 @@ public class MainActivity extends AppCompatActivity {
         //this will be a list of flavor names (not colors at this time)
         List<String> values = new ArrayList<>();
 
-        //this activity will call the google API when we do the thread
-        FlavorGetter flavors = new FlavorGetter((ArrayList<String>)values);
-
-
         //check to see if connected to the internet
         ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-            //we are connected to a network
+
+            //this activity will call the google API when we do the thread
+            FlavorGetter flavors = new FlavorGetter((ArrayList<String>)values, this);
             //start the thread
             Thread thread = new Thread(flavors, "Get Flavors");
             thread.start();
@@ -53,19 +51,28 @@ public class MainActivity extends AppCompatActivity {
                 //this could have problems if internet connection is lost during the thread (or if there
                 //is a problem connecting to the api) A better way to do it might be a start activity for result
                 //(like how PunchCardActivity starts AddPunchActivity)
+                //except it's not an activity... so not sure if that would work
                 thread.join(); //this is a waiting thing that may or may not be smart to use
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
         else {
-            //a temporary message until we get a better alternative (read from a file or something)
-            values.add("Can't Connect to the Internet");
+            //this activity will call the google API when we do the thread
+            FlavorGetterFromPrefs flavors = new FlavorGetterFromPrefs((ArrayList<String>)values, this);
+            //start the thread
+            Thread thread2 = new Thread(flavors, "Get Saved Flavors");
+            thread2.start();
+            try {
+                thread2.join(); //this is a waiting thing that may or may not be smart to use
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
         //this is putting the flavor names into the recyclerView. No colors right now (they're in the FlavorItem though)
         adapter.setData(values);
-            adapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();
     }
 
     /**
