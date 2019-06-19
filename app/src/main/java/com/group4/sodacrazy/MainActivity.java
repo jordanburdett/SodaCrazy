@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
+
     /**
      * This is for testing the punch card stuff. It can be changed to whatever menu thing we have.
      * Just make sure that whatever button is supposed to go to the punch card screen does this

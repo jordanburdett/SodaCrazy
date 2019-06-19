@@ -21,9 +21,12 @@ public class PunchCardActivity extends Activity {
     static final int ADD_PUNCH_REQUEST = 1;
     int punches;
     int redeemable;
-    TextView txtView; //number of punches left for a free italian ice
-    TextView txtView2; //number of redeemable italian ices
+    TextView txtView;   //number of punches left for a free italian ice
+    TextView txtView2;  //number of redeemable italian ices
     ImageView imgView;
+    public static final String SHARED_PREF = "com.group4.sodacrazy.PREFERENCES";
+    public static final String TOTAL_PUNCHES = "TotalPunches";
+    public static final String REDEEMABLE_ICE = "RedeemableIce";
 
     SharedPreferences prefs;
     @Override
@@ -33,15 +36,15 @@ public class PunchCardActivity extends Activity {
         Intent intent = getIntent(); //this might do nothing. Not sure.
 
         prefs = this.getSharedPreferences(
-                "com.group4.sodacrazy.PREFERENCES", Context.MODE_PRIVATE);
-        punches = prefs.getInt("TotalPunches", 0);
-        redeemable = prefs.getInt("RedeemableIce", 0);
+                SHARED_PREF, Context.MODE_PRIVATE);
+        punches = prefs.getInt(TOTAL_PUNCHES, 0);
+        redeemable = prefs.getInt(REDEEMABLE_ICE, 0);
 
-        txtView = findViewById(R.id.textView); //punches remaining
-        txtView2 = findViewById(R.id.textView2); //redeemable ices
+        txtView = findViewById(R.id.textView);      //punches remaining
+        txtView2 = findViewById(R.id.textView2);    //redeemable ices
 
-        txtView.setText("Punches Remaining: " + (10 - (prefs.getInt("TotalPunches", 0))));
-        txtView2.setText("Free Italian Ices: " + prefs.getInt("RedeemableIce", 0));
+        txtView.setText("Punches Remaining: " + (10 - (prefs.getInt(TOTAL_PUNCHES, 0))));
+        txtView2.setText("Free Italian Ices: " + prefs.getInt(REDEEMABLE_ICE, 0));
 
         imgView = findViewById(R.id.cupcake);
 
@@ -99,6 +102,7 @@ public class PunchCardActivity extends Activity {
         startActivityForResult(intent, ADD_PUNCH_REQUEST);
     }
 
+
     /**
      * This is what the activity will do when it gets a result from a the addPunch activity
      */
@@ -135,12 +139,12 @@ public class PunchCardActivity extends Activity {
                 }
 
                 //update values in shared preferences
-                prefs.edit().putInt("TotalPunches", punches).apply();
-                prefs.edit().putInt("RedeemableIce", redeemable).apply();
+                prefs.edit().putInt(TOTAL_PUNCHES, punches).apply();
+                prefs.edit().putInt(REDEEMABLE_ICE, redeemable).apply();
 
                 //update numbers for the user
-                txtView.setText("Punches Remaining: " + (10 - (prefs.getInt("TotalPunches", 0))));
-                txtView2.setText("Free Italian Ice: " + prefs.getInt("RedeemableIce", 0));
+                txtView.setText("Punches Remaining: " + (10 - (prefs.getInt(TOTAL_PUNCHES, 0))));
+                txtView2.setText("Free Italian Ice: " + prefs.getInt(REDEEMABLE_ICE, 0));
 
                 //update the fill-up italian ice image
                 setImage();
