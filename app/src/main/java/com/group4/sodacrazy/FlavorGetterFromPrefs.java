@@ -47,6 +47,7 @@ public class FlavorGetterFromPrefs implements Runnable {
         //I haven't tested it.
         if (savedStuff.equals("")) {
             flavors.add("Unable to display flavors; check your connection");
+            return;
         }
 
         //create an input stream using our string of Json data
