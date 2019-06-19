@@ -10,6 +10,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "Unable to Update Flavors", Toast.LENGTH_LONG);
+            toast.show();
         }
 
         //this is putting the flavor names into the recyclerView. No colors right now (they're in the FlavorItem though)
