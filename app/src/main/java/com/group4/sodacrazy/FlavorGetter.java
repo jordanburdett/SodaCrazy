@@ -11,6 +11,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.ref.WeakReference;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -23,16 +24,15 @@ public class FlavorGetter extends AsyncTask<String, String, String> {
 
     private AsyncTaskListener listener;
     //a list of flavor NAMES that we're going to alter. The changes will apply to the list in MainActivity, too
-    ArrayList<FlavorItem> flavors;
-    Context context;
-    SharedPreferences prefs;
+    private ArrayList<FlavorItem> flavors;
+    private WeakReference<Context> context;
 
     /**
      * non-default constructor allows the changeable flavors string to go back to MainActivity
      * */
-    public FlavorGetter(ArrayList<FlavorItem> flavors, Context context) {
+    FlavorGetter(ArrayList<FlavorItem> flavors, Context context) {
         this.flavors = flavors;
-        this.context = context;
+        this.context = new WeakReference<>(context);
         listener = (AsyncTaskListener)context;
     }
 
@@ -54,8 +54,8 @@ public class FlavorGetter extends AsyncTask<String, String, String> {
 
         //create a string of Json data to put in shared preferences
         StringBuilder stringBuilder = new StringBuilder();
-        String line = null;
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(response))) {
+            String line;
             while ((line = bufferedReader.readLine()) != null) {
                 stringBuilder.append(line);
             }
@@ -67,7 +67,7 @@ public class FlavorGetter extends AsyncTask<String, String, String> {
         String jsonFlavors = stringBuilder.toString();
 
         //open shared preferences and add the string
-        prefs = context.getSharedPreferences(
+        SharedPreferences prefs = context.get().getSharedPreferences(
                 "com.group4.sodacrazy.PREFERENCES", Context.MODE_PRIVATE);
         //we need to get this to work.
         prefs.edit().putString("flavors", jsonFlavors).apply();

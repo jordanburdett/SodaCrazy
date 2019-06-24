@@ -17,8 +17,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements AsyncTaskListener {
 
-    private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
     private FlavorAdapter adapter;
     List<FlavorItem> values;
 
@@ -27,17 +25,17 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = findViewById(R.id.FlavorView);
+        RecyclerView recyclerView = findViewById(R.id.FlavorView);
         recyclerView.setHasFixedSize(true);
         adapter = new FlavorAdapter(this);
         recyclerView.setAdapter(adapter);
-        layoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
 
 
         //this will be a list of flavor names (not colors at this time)
-        values = new ArrayList<FlavorItem>();
+        values = new ArrayList<>();
 
         //add the first one saying what this is
         FlavorItem item = new FlavorItem("Today's Italian Ice Flavors", "#ffffff");

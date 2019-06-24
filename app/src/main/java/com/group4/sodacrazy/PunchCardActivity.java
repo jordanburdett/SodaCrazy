@@ -33,7 +33,6 @@ public class PunchCardActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_punch_card);
-        Intent intent = getIntent(); //this might do nothing. Not sure.
 
         prefs = this.getSharedPreferences(
                 SHARED_PREF, Context.MODE_PRIVATE);
@@ -43,8 +42,10 @@ public class PunchCardActivity extends Activity {
         txtView = findViewById(R.id.textView);      //punches remaining
         txtView2 = findViewById(R.id.textView2);    //redeemable ices
 
-        txtView.setText("Punches Remaining: " + (10 - (prefs.getInt(TOTAL_PUNCHES, 0))));
-        txtView2.setText("Free Italian Ices: " + prefs.getInt(REDEEMABLE_ICE, 0));
+        String punchText = "Punches Remaining: " + (10 - (prefs.getInt(TOTAL_PUNCHES, 0)));
+        String redeemText = "Free Italian Ices: " + prefs.getInt(REDEEMABLE_ICE, 0);
+        txtView.setText(punchText);
+        txtView2.setText(redeemText);
 
         imgView = findViewById(R.id.cupcake);
 
@@ -127,7 +128,7 @@ public class PunchCardActivity extends Activity {
                     //create Toast (YUM!)
                     Toast toast = Toast.makeText(getApplicationContext(),
                             "Enjoy Your Free Italian Ice\nYou Earned It! :)", Toast.LENGTH_LONG);
-                    TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
+                    TextView v = toast.getView().findViewById(android.R.id.message);
                     if( v != null) v.setGravity(Gravity.CENTER);
                     toast.show();
                 }
@@ -143,17 +144,16 @@ public class PunchCardActivity extends Activity {
                 prefs.edit().putInt(REDEEMABLE_ICE, redeemable).apply();
 
                 //update numbers for the user
-                txtView.setText("Punches Remaining: " + (10 - (prefs.getInt(TOTAL_PUNCHES, 0))));
-                txtView2.setText("Free Italian Ice: " + prefs.getInt(REDEEMABLE_ICE, 0));
+
+                String punchText = "Punches Remaining: " + (10 - (prefs.getInt(TOTAL_PUNCHES, 0)));
+                String redeemText = "Free Italian Ices: " + prefs.getInt(REDEEMABLE_ICE, 0);
+                txtView.setText(punchText);
+                txtView2.setText(redeemText);
 
                 //update the fill-up italian ice image
                 setImage();
             }
         }
-    }
-
-    public void toMain(View view) {
-        finish();
     }
 
     public void toBuild(View view) {

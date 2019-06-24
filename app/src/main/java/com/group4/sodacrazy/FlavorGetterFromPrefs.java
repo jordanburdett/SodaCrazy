@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -18,18 +19,17 @@ import java.util.Scanner;
 public class FlavorGetterFromPrefs extends AsyncTask<String, String, String> {
 
     //a list of flavor NAMES that we're going to alter. The changes will apply to the list in MainActivity, too
-    ArrayList<FlavorItem> flavors;
+    private ArrayList<FlavorItem> flavors;
 
-    SharedPreferences prefs;
-    Context context;
+    private WeakReference<Context> context;
     private AsyncTaskListener listener;
 
     /**
      * non-default constructor allows the changeable flavors string to go back to MainActivity
      * */
-    public FlavorGetterFromPrefs(ArrayList<FlavorItem> flavors, Context context) {
+    FlavorGetterFromPrefs(ArrayList<FlavorItem> flavors, Context context) {
         this.flavors = flavors;
-        this.context = context;
+        this.context = new WeakReference<>(context);
         listener = (AsyncTaskListener)context;
     }
 
@@ -37,7 +37,7 @@ public class FlavorGetterFromPrefs extends AsyncTask<String, String, String> {
     protected String doInBackground(String... strings) {
 
         //open shared preferences
-        prefs = context.getSharedPreferences(
+        SharedPreferences prefs = context.get().getSharedPreferences(
                 "com.group4.sodacrazy.PREFERENCES", Context.MODE_PRIVATE);
 
         //put the information in a local string (I tried skipping this: didn't work out well
@@ -45,6 +45,7 @@ public class FlavorGetterFromPrefs extends AsyncTask<String, String, String> {
 
         //this should put this message if on the first ever use of the app there is no network
         //I haven't tested it.
+        assert savedStuff != null;
         if (savedStuff.equals("")) {
             FlavorItem errMessage = new FlavorItem("Unable to display flavors; check your connection", "#000000");
             flavors.add(errMessage);

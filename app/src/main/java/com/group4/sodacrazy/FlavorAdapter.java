@@ -20,7 +20,6 @@ public class FlavorAdapter extends RecyclerView.Adapter<FlavorAdapter.ViewHolder
     // Currently just holds a list of strings..
     // this will eventually be a list of flavors
     private List<FlavorItem> data;
-    private Context context;
 
     /**
      * Non-default constructor
@@ -28,9 +27,8 @@ public class FlavorAdapter extends RecyclerView.Adapter<FlavorAdapter.ViewHolder
      *
      * @param context Where we are coming from.
      */
-    public FlavorAdapter(Context context) {
+    FlavorAdapter(Context context) {
         this.data = new ArrayList<>();
-        this.context = context;
     }
 
     /**
@@ -38,7 +36,7 @@ public class FlavorAdapter extends RecyclerView.Adapter<FlavorAdapter.ViewHolder
      *
      * @param data ArrayList of flavorItems
      */
-    public void setData(List<FlavorItem> data) {
+    void setData(List<FlavorItem> data) {
 
         this.data = data;
     }
@@ -48,8 +46,9 @@ public class FlavorAdapter extends RecyclerView.Adapter<FlavorAdapter.ViewHolder
      *
      * @return holder
      */
+    @NonNull
     @Override
-    public FlavorAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public FlavorAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(
                 R.layout.flavor_list_layout, parent, false);
@@ -64,7 +63,7 @@ public class FlavorAdapter extends RecyclerView.Adapter<FlavorAdapter.ViewHolder
      * @param position Where in the array?
      */
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         holder.tvFlavor.setText(data.get(position).name);
         holder.tvFlavor.setTextColor(Color.parseColor(data.get(position).color));
@@ -87,11 +86,11 @@ public class FlavorAdapter extends RecyclerView.Adapter<FlavorAdapter.ViewHolder
      *
      * This is used by the FlavorAdapter to control the text views
      */
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvFlavor;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             tvFlavor = itemView.findViewById(R.id.tv_flavor);
         }

@@ -11,7 +11,7 @@ class FlavorItem {
      * Non-default constructor
      * Used to create new flavorItems
      */
-    public FlavorItem(String name, String color) {
+    FlavorItem(String name, String color) {
         this.name = name;
         this.color = color;
     }
