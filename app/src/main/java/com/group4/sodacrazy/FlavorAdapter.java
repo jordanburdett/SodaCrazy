@@ -2,6 +2,7 @@ package com.group4.sodacrazy;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,16 +20,16 @@ public class FlavorAdapter extends RecyclerView.Adapter<FlavorAdapter.ViewHolder
 
     // Currently just holds a list of strings..
     // this will eventually be a list of flavors
-    private List<String> data;
+    private List<FlavorItem> data;
     private Context context;
 
     public FlavorAdapter(Context context) {
-        this.data = new ArrayList<String>();
+        this.data = new ArrayList<FlavorItem>();
         this.context = context;
     }
 
     // again this will be a flavor not a string
-    public void setData(List<String> data) {
+    public void setData(List<FlavorItem> data) {
 
         this.data = data;
     }
@@ -45,7 +46,8 @@ public class FlavorAdapter extends RecyclerView.Adapter<FlavorAdapter.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        holder.tvflavor.setText(data.get(position));
+        holder.tvflavor.setText(data.get(position).name);
+        holder.tvflavor.setTextColor(Color.parseColor(data.get(position).color));
 
     }
 

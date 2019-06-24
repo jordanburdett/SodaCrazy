@@ -74,7 +74,6 @@
         app:layout_constraintTop_toTopOf="@+id/blackBar" />
 
     <ImageView
-        android:id="@+id/imageView6"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
@@ -84,7 +83,6 @@
         app:layout_constraintStart_toStartOf="@+id/FlavorView"
         app:layout_constraintTop_toTopOf="@+id/FlavorView"
         app:srcCompat="@drawable/seal" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/FlavorView"
         android:layout_width="0dp"

@@ -23,14 +23,14 @@ import java.util.Scanner;
 public class FlavorGetter implements Runnable {
 
     //a list of flavor NAMES that we're going to alter. The changes will apply to the list in MainActivity, too
-    ArrayList<String> flavors;
+    ArrayList<FlavorItem> flavors;
     Context context;
     SharedPreferences prefs;
 
     /**
      * non-default constructor allows the changeable flavors string to go back to MainActivity
      * */
-    public FlavorGetter(ArrayList<String> flavors, Context context) {
+    public FlavorGetter(ArrayList<FlavorItem> flavors, Context context) {
         this.flavors = flavors;
         this.context = context;
     }
@@ -84,9 +84,6 @@ public class FlavorGetter implements Runnable {
         //calling this "list" is a little deceptive. It's not a list, but it has one
         Flavors list = gson.fromJson(responseBody, Flavors.class);
 
-        //making a list of individual flavors (which contain a name and color)
-        List<FlavorItem> allFlavors = new ArrayList<FlavorItem>();
-
         //actually populate the list
         for (ArrayList<String> i : list.values) {
             //the if statement lets us ignore empty flavor names
@@ -95,17 +92,12 @@ public class FlavorGetter implements Runnable {
                 FlavorItem f = new FlavorItem();
                 f.name = i.get(0);
                 f.color = i.get(1);
-                allFlavors.add(f); //append to the list
+                flavors.add(f); //append to the list
                 //for (String s : i) {
                 //     System.out.println(s);
                 //}
             }
         }
 
-        //we're now adding all the flavor names to the string that was passed in as a parameter
-        //this is how we get them back to MainActivity
-        for (FlavorItem f : allFlavors) {
-            flavors.add(f.name);
-        }
     }
 }

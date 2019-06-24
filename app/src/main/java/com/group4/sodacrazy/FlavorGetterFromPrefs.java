@@ -25,7 +25,7 @@ public class FlavorGetterFromPrefs implements Runnable {
     /**
      * non-default constructor allows the changeable flavors string to go back to MainActivity
      * */
-    public FlavorGetterFromPrefs(ArrayList<String> flavors, Context context) {
+    public FlavorGetterFromPrefs(ArrayList<FlavorItem> flavors, Context context) {
         this.flavors = flavors;
         this.context = context;
     }
@@ -42,7 +42,7 @@ public class FlavorGetterFromPrefs implements Runnable {
 
         //this should put this message if on the first ever use of the app there is no network
         //I haven't tested it.
-        FlavorItem errMessage = new FlavorItem;
+        FlavorItem errMessage = new FlavorItem();
         errMessage.name = "Unable to display flavors; check your connection";
         errMessage.color = "#000000";
 

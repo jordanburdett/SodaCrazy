@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //this will be a list of flavor names (not colors at this time)
-        List<String> values = new ArrayList<>();
+        List<FlavorItem> values = new ArrayList<FlavorItem>();
 
         //check to see if connected to the internet
         ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
 
             //this activity will call the google API when we do the thread
-            FlavorGetter flavors = new FlavorGetter((ArrayList<String>)values, this);
+            FlavorGetter flavors = new FlavorGetter((ArrayList<FlavorItem>) values, this);
             //start the thread
             Thread thread = new Thread(flavors, "Get Flavors");
             thread.start();
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             //this activity will call the google API when we do the thread
-            FlavorGetterFromPrefs flavors = new FlavorGetterFromPrefs((ArrayList<String>)values, this);
+            FlavorGetterFromPrefs flavors = new FlavorGetterFromPrefs((ArrayList<FlavorItem>) values, this);
             //start the thread
             Thread thread2 = new Thread(flavors, "Get Saved Flavors");
             thread2.start();
