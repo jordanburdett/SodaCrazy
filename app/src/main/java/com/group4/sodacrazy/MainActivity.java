@@ -3,7 +3,6 @@ package com.group4.sodacrazy;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -11,20 +10,29 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-
 import java.util.ArrayList;
-import java.util.List;
 
+/**
+ * MainActivity
+ * <p>
+ * This is the entry point to our application.
+ */
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
-    private FlavorAdapter adapter;
-
+    /**
+     * onCreate
+     *
+     * When the app is first started we want to set up the recyclerView
+     * Call the flavor api and display updated flavors.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        RecyclerView recyclerView;
+        RecyclerView.LayoutManager layoutManager;
+        FlavorAdapter adapter;
 
         recyclerView = findViewById(R.id.FlavorView);
         recyclerView.setHasFixedSize(true);
@@ -33,10 +41,8 @@ public class MainActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-
-
         //this will be a list of flavor names (not colors at this time)
-        List<FlavorItem> values = new ArrayList<FlavorItem>();
+        ArrayList<FlavorItem> values = new ArrayList<>();
 
         //add the first one saying what this is
         FlavorItem item = new FlavorItem("Today's Italian Ice Flavors", "#ffffff");
@@ -49,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
 
             //this activity will call the google API when we do the thread
-            FlavorGetter flavors = new FlavorGetter((ArrayList<FlavorItem>) values, this);
+            FlavorGetter flavors = new FlavorGetter(values, this);
             //start the thread
             Thread thread = new Thread(flavors, "Get Flavors");
             thread.start();
@@ -62,10 +68,9 @@ public class MainActivity extends AppCompatActivity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
-        else {
+        } else {
             //this activity will call the google API when we do the thread
-            FlavorGetterFromPrefs flavors = new FlavorGetterFromPrefs((ArrayList<FlavorItem>) values, this);
+            FlavorGetterFromPrefs flavors = new FlavorGetterFromPrefs(values, this);
             //start the thread
             Thread thread2 = new Thread(flavors, "Get Saved Flavors");
             thread2.start();
@@ -79,27 +84,41 @@ public class MainActivity extends AppCompatActivity {
             toast.show();
         }
 
-        //this is putting the flavor names into the recyclerView. No colors right now (they're in the FlavorItem though)
+        //Tell the adapter what to display
         adapter.setData(values);
+
+        //Tell the adapter to update the View
         adapter.notifyDataSetChanged();
     }
 
-
     /**
-     * This is for testing the punch card stuff. It can be changed to whatever menu thing we have.
-     * Just make sure that whatever button is supposed to go to the punch card screen does this
-     * method.
-     **/
+     * toPunch
+     *
+     * Starts the punchCardActivity
+     * @param view to allow the onclick in xml
+     */
     public void toPunch(View view) {
         Intent intent = new Intent(this, PunchCardActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * toBuild
+     *
+     * Starts the BuildActivity
+     * @param view to allow the onclick in xml
+     */
     public void toBuild(View view) {
         Intent intent = new Intent(this, BuildActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * toMenu
+     *
+     * Starts the MenuActivity
+     * @param view to allow the onclick in xml
+     */
     public void toMenu(View view) {
         Intent intent = new Intent(this, MenuActivity.class);
         startActivity(intent);

@@ -24,10 +24,10 @@ import java.io.IOException;
 
 public class AddPunchActivity extends AppCompatActivity {
 
-    SurfaceView surfaceView; //where the camera will show up
+    SurfaceView surfaceView;   //where the camera will show up
     CameraSource cameraSource; //this lets us use the camera on a very basic level (which is all we need)
-    TextView txtView; //display text (eventually might have instructions or something)
-    BarcodeDetector detector; //so we can read barcodes. This is part of the google play services thing
+    TextView txtView;          //display text (eventually might have instructions or something)
+    BarcodeDetector detector;  //so we can read barcodes. This is part of the google play services thing
 
     String purpose;
 
@@ -36,7 +36,7 @@ public class AddPunchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_punch);
 
-        txtView = (TextView) findViewById(R.id.txtview);
+        txtView = findViewById(R.id.txtview);
 
 
         //if camera permissions have been denied, instruct user to allow them
@@ -51,7 +51,7 @@ public class AddPunchActivity extends AppCompatActivity {
         purpose = intent.getStringExtra("purpose"); //this will be either "punch" or "redeem"
 
 
-        surfaceView = (SurfaceView) findViewById(R.id.cameraPreview);
+        surfaceView = findViewById(R.id.cameraPreview);
 
         //make a detector that will look for qr codes
         detector = new BarcodeDetector.Builder(getApplicationContext())
@@ -68,7 +68,8 @@ public class AddPunchActivity extends AppCompatActivity {
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
                 //if we don't have permission, we can't do anything. This will show a black screen
-                if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.checkSelfPermission(getApplicationContext()
+                        , Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                     return;
                 }
                 try {
@@ -109,9 +110,11 @@ public class AddPunchActivity extends AppCompatActivity {
                         public void run() { //Ok. I DO NOT want to do anything with a textview. I'll fix this later.
                             //if the 1st (usually only) qr code on the screen matches the secret code for add punch
                             //AND the purpose is to add a punch
-                            if (purpose.equals("punch") && qrCodes.valueAt(0).rawValue.equals("soda34234298432075892780324932849038249032890483290crazy")) {
+                            if (purpose.equals("punch") && qrCodes.valueAt(0)
+                                    .rawValue.equals("soda34234298432075892780324932849038249032890483290crazy")) {
                                 //vibrate a bit to let the user know it worked
-                                Vibrator vibrator = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+                                Vibrator vibrator = (Vibrator) getApplicationContext()
+                                        .getSystemService(Context.VIBRATOR_SERVICE);
                                 vibrator.vibrate(100);
                                 //stop the camera source (this might not be necessary)
                                 cameraSource.stop();
@@ -127,13 +130,15 @@ public class AddPunchActivity extends AppCompatActivity {
 
                             //if the 1st (usually only) qr code on the screen matches the secret code for italian ice redeem
                             //AND the purpose is to redeem an italian ice
-                            else if (purpose.equals("redeem") && qrCodes.valueAt(0).rawValue.equals("soda383984932084930843209REDEEM3484fdf9384903849302crazy")) {
+                            else if (purpose.equals("redeem") && qrCodes.valueAt(0)
+                                    .rawValue.equals("soda383984932084930843209REDEEM3484fdf9384903849302crazy")) {
 
                                 //stop the camera source (this might not be necessary)
                                 cameraSource.stop();
 
                                 //vibrate a bit to let the user know it worked
-                                Vibrator vibrator = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+                                Vibrator vibrator = (Vibrator) getApplicationContext()
+                                        .getSystemService(Context.VIBRATOR_SERVICE);
                                 vibrator.vibrate(100);
 
                                 //give information back to the activity that called this one

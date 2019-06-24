@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +29,7 @@ public class FlavorAdapter extends RecyclerView.Adapter<FlavorAdapter.ViewHolder
      * @param context Where we are coming from.
      */
     public FlavorAdapter(Context context) {
-        this.data = new ArrayList<FlavorItem>();
+        this.data = new ArrayList<>();
         this.context = context;
     }
 
@@ -43,6 +45,7 @@ public class FlavorAdapter extends RecyclerView.Adapter<FlavorAdapter.ViewHolder
 
     /**
      * This sets up the view so It is ready to be used.
+     *
      * @return holder
      */
     @Override
@@ -50,26 +53,28 @@ public class FlavorAdapter extends RecyclerView.Adapter<FlavorAdapter.ViewHolder
 
         View view = LayoutInflater.from(parent.getContext()).inflate(
                 R.layout.flavor_list_layout, parent, false);
-        ViewHolder holder = new ViewHolder(view);
-        return holder;
+
+        return new ViewHolder(view);
     }
 
     /**
      * This controls what happens for each textView for each element in the array.
+     *
      * @param holder   Where the textView is stored.
      * @param position Where in the array?
      */
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        holder.tvflavor.setText(data.get(position).name);
-        holder.tvflavor.setTextColor(Color.parseColor(data.get(position).color));
-        holder.tvflavor.setShadowLayer(2.5f, -2, 2, Color.BLACK);
+        holder.tvFlavor.setText(data.get(position).name);
+        holder.tvFlavor.setTextColor(Color.parseColor(data.get(position).color));
+        holder.tvFlavor.setShadowLayer(2.5f, -2, 2, Color.BLACK);
 
     }
 
     /**
      * Gets the number of items in RecyclerView
+     *
      * @return size
      */
     @Override
@@ -79,15 +84,16 @@ public class FlavorAdapter extends RecyclerView.Adapter<FlavorAdapter.ViewHolder
 
     /**
      * ViewHolder class
+     *
      * This is used by the FlavorAdapter to control the text views
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvflavor;
+        TextView tvFlavor;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tvflavor = itemView.findViewById(R.id.tv_flavor);
+            tvFlavor = itemView.findViewById(R.id.tv_flavor);
         }
     }
 }
