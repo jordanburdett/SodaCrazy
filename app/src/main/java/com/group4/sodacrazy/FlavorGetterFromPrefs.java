@@ -6,11 +6,8 @@ import android.content.SharedPreferences;
 import com.google.gson.Gson;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -20,7 +17,7 @@ import java.util.Scanner;
 public class FlavorGetterFromPrefs implements Runnable {
 
     //a list of flavor NAMES that we're going to alter. The changes will apply to the list in MainActivity, too
-    ArrayList<String> flavors;
+    ArrayList<FlavorItem> flavors;
 
     SharedPreferences prefs;
     Context context;
@@ -45,8 +42,12 @@ public class FlavorGetterFromPrefs implements Runnable {
 
         //this should put this message if on the first ever use of the app there is no network
         //I haven't tested it.
+        FlavorItem errMessage = new FlavorItem;
+        errMessage.name = "Unable to display flavors; check your connection";
+        errMessage.color = "#000000";
+
         if (savedStuff.equals("")) {
-            flavors.add("Unable to display flavors; check your connection");
+            flavors.add(errMessage);
             return;
         }
 
@@ -64,10 +65,7 @@ public class FlavorGetterFromPrefs implements Runnable {
         //calling this "list" is a little deceptive. It's not a list, but it has one
         Flavors list = gson.fromJson(responseBody, Flavors.class);
 
-        //making a list of individual flavors (which contain a name and color)
-        List<FlavorItem> allFlavors = new ArrayList<FlavorItem>();
-
-        //actually populate the list
+        //populate the list of flavors
         for (ArrayList<String> i : list.values) {
             //the if statement lets us ignore empty flavor names
             if (!(i.get(0).equals("")))
@@ -75,17 +73,11 @@ public class FlavorGetterFromPrefs implements Runnable {
                 FlavorItem f = new FlavorItem();
                 f.name = i.get(0);
                 f.color = i.get(1);
-                allFlavors.add(f); //append to the list
+                flavors.add(f); //append to the list
                 //for (String s : i) {
                 //     System.out.println(s);
                 //}
             }
-        }
-
-        //we're now adding all the flavor names to the string that was passed in as a parameter
-        //this is how we get them back to MainActivity
-        for (FlavorItem f : allFlavors) {
-            flavors.add(f.name);
         }
     }
 }
