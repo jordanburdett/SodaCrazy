@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         //this will be a list of flavor names (not colors at this time)
         List<FlavorItem> values = new ArrayList<FlavorItem>();
 
+
         //check to see if connected to the internet
         ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||

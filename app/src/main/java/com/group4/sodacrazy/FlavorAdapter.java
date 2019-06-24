@@ -48,6 +48,7 @@ public class FlavorAdapter extends RecyclerView.Adapter<FlavorAdapter.ViewHolder
 
         holder.tvflavor.setText(data.get(position).name);
         holder.tvflavor.setTextColor(Color.parseColor(data.get(position).color));
+        holder.tvflavor.setShadowLayer(2.5f, -2, 2, Color.BLACK);
 
     }
 
