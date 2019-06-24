@@ -2,6 +2,7 @@ package com.group4.sodacrazy;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 
 import com.google.gson.Gson;
 
@@ -11,17 +12,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
  * GetFlavorsActivity parses json data into the Flavors class, makes a list of FlavorItems, and
  * changes the list of flavor names so that MainActivity can access it (if you change that, change this comment)
  * */
-public class FlavorGetter implements Runnable {
+public class FlavorGetter extends AsyncTask<String, String, String> {
 
+    private AsyncTaskListener listener;
     //a list of flavor NAMES that we're going to alter. The changes will apply to the list in MainActivity, too
     ArrayList<FlavorItem> flavors;
     Context context;
@@ -33,12 +33,15 @@ public class FlavorGetter implements Runnable {
     public FlavorGetter(ArrayList<FlavorItem> flavors, Context context) {
         this.flavors = flavors;
         this.context = context;
+        listener = (AsyncTaskListener)context;
     }
 
-
     @Override
-    public void run() {
-        //the url we're requesting from
+    protected String doInBackground(String... strings) {
+
+        //publishProgress("Updating Flavors");
+
+
         String url = "https://sheets.googleapis.com/v4/spreadsheets/1T6u5dMxYl_pfRkTOTCeA5HXFi1lVj-KvG3Y17wn_oHs/values/A2:B?key=AIzaSyCNoLqFA99dS-CtcOf-MFxA4xNhUPoMtDs";
 
         //create an input stream with Json Data in it
@@ -87,15 +90,16 @@ public class FlavorGetter implements Runnable {
         //actually populate the list
         for (ArrayList<String> i : list.values) {
             //the if statement lets us ignore empty flavor names
-            if (!(i.get(0).equals("")))
-            {
+            if (!(i.get(0).equals(""))) {
                 FlavorItem f = new FlavorItem(i.get(0), i.get(1));
                 flavors.add(f); //append to the list
-                //for (String s : i) {
-                //     System.out.println(s);
-                //}
             }
         }
+        return null;
+    }
 
+    @Override
+    protected void onPostExecute(String result) {
+        listener.updateResult();
     }
 }
