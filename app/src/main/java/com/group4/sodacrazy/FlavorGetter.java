@@ -89,9 +89,7 @@ public class FlavorGetter implements Runnable {
             //the if statement lets us ignore empty flavor names
             if (!(i.get(0).equals("")))
             {
-                FlavorItem f = new FlavorItem();
-                f.name = i.get(0);
-                f.color = i.get(1);
+                FlavorItem f = new FlavorItem(i.get(0), i.get(1));
                 flavors.add(f); //append to the list
                 //for (String s : i) {
                 //     System.out.println(s);

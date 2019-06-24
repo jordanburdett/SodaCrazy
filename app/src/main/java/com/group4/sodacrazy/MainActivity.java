@@ -38,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
         //this will be a list of flavor names (not colors at this time)
         List<FlavorItem> values = new ArrayList<FlavorItem>();
 
+        //add the first one saying what this is
+        FlavorItem item = new FlavorItem("Today's Italian Ice Flavors", "#ffffff");
+        values.add(item);
+
 
         //check to see if connected to the internet
         ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);

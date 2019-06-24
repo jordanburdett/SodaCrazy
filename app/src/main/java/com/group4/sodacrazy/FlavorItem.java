@@ -6,4 +6,9 @@ package com.group4.sodacrazy;
 class FlavorItem {
     String name; // e.g. "Salted Caramel"
     String color;  // e.g. "#c68e17"
+
+    public FlavorItem(String name, String color) {
+        this.name = name;
+        this.color = color;
+    }
 }

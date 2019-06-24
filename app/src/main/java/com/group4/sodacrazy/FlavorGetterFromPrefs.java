@@ -42,9 +42,8 @@ public class FlavorGetterFromPrefs implements Runnable {
 
         //this should put this message if on the first ever use of the app there is no network
         //I haven't tested it.
-        FlavorItem errMessage = new FlavorItem();
-        errMessage.name = "Unable to display flavors; check your connection";
-        errMessage.color = "#000000";
+        FlavorItem errMessage = new FlavorItem("Unable to display flavors; check your connection",
+                "#000000");
 
         if (savedStuff.equals("")) {
             flavors.add(errMessage);
@@ -70,9 +69,7 @@ public class FlavorGetterFromPrefs implements Runnable {
             //the if statement lets us ignore empty flavor names
             if (!(i.get(0).equals("")))
             {
-                FlavorItem f = new FlavorItem();
-                f.name = i.get(0);
-                f.color = i.get(1);
+                FlavorItem f = new FlavorItem(i.get(0), i.get(1));
                 flavors.add(f); //append to the list
                 //for (String s : i) {
                 //     System.out.println(s);
