@@ -1,21 +1,18 @@
 package com.group4.sodacrazy;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
-
+/**
+ * This is the adapter that controls the flavor recyclerView on the main screen.
+ */
 public class FlavorAdapter extends RecyclerView.Adapter<FlavorAdapter.ViewHolder> {
 
     // Currently just holds a list of strings..
@@ -23,17 +20,31 @@ public class FlavorAdapter extends RecyclerView.Adapter<FlavorAdapter.ViewHolder
     private List<FlavorItem> data;
     private Context context;
 
+    /**
+     * Non-default constructor
+     * Needs to know the context when created.
+     *
+     * @param context Where we are coming from.
+     */
     public FlavorAdapter(Context context) {
         this.data = new ArrayList<FlavorItem>();
         this.context = context;
     }
 
-    // again this will be a flavor not a string
+    /**
+     * Sets the data for a single Text view in the
+     *
+     * @param data ArrayList of flavorItems
+     */
     public void setData(List<FlavorItem> data) {
 
         this.data = data;
     }
 
+    /**
+     * This sets up the view so It is ready to be used.
+     * @return holder
+     */
     @Override
     public FlavorAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -43,6 +54,11 @@ public class FlavorAdapter extends RecyclerView.Adapter<FlavorAdapter.ViewHolder
         return holder;
     }
 
+    /**
+     * This controls what happens for each textView for each element in the array.
+     * @param holder   Where the textView is stored.
+     * @param position Where in the array?
+     */
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
@@ -52,11 +68,19 @@ public class FlavorAdapter extends RecyclerView.Adapter<FlavorAdapter.ViewHolder
 
     }
 
+    /**
+     * Gets the number of items in RecyclerView
+     * @return size
+     */
     @Override
     public int getItemCount() {
         return data.size();
     }
 
+    /**
+     * ViewHolder class
+     * This is used by the FlavorAdapter to control the text views
+     */
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvflavor;
