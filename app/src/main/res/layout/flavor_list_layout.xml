@@ -24,7 +24,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="false"
             android:background="#00FFFFFF"
-            android:fontFamily="casual"
+            android:fontFamily="@font/ultra"
             android:gravity="center"
             android:text="@string/flavors"
             android:textColor="#000000"
