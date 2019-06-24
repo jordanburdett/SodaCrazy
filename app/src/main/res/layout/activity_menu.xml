@@ -42,18 +42,26 @@
                 <Button
                     android:id="@+id/punchButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:background="#202020"
+                    android:fontFamily="@font/ultra"
+                    android:minHeight="32dip"
                     android:onClick="toPunch"
-                    android:text="@string/punch" />
+                    android:text="@string/punch"
+                    android:textColor="#FCFDFA" />
 
                 <Button
                     android:id="@+id/button5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="#202020"
+                    android:fontFamily="@font/ultra"
+                    android:minHeight="32dip"
                     android:onClick="toBuild"
-                    android:text="@string/build" />
+                    android:text="@string/build"
+                    android:textColor="#FCFDFA" />
             </LinearLayout>
 
             <!--italian ice portion of menu-->
