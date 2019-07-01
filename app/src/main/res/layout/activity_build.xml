@@ -2,7 +2,76 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+
+    <!--banner-->
+    <ImageView
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/menu_banner"
+        android:contentDescription="@string/todo" />
+
+    <!--menu bar-->
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+        <Button
+            android:id="@+id/homeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#202020"
+            android:fontFamily="@font/ultra"
+            android:minHeight="32dip"
+            android:onClick="toHome"
+            android:text="@string/home"
+            android:textColor="#FCFDFA" />
+
+        <Button
+            android:id="@+id/menuButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#202020"
+            android:fontFamily="@font/ultra"
+            android:minHeight="32dip"
+            android:onClick="toMenu"
+            android:text="@string/menu"
+            android:textColor="#FCFDFA" />
+
+        <Button
+            android:id="@+id/punchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#202020"
+            android:fontFamily="@font/ultra"
+            android:minHeight="32dip"
+            android:onClick="toPunch"
+            android:text="@string/punch"
+            android:textColor="#FCFDFA" />
+
+        <Button
+            android:id="@+id/buildButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#202020"
+            android:fontFamily="@font/ultra"
+            android:minHeight="32dip"
+            android:onClick="toBuild"
+            android:text="@string/build"
+            android:textColor="#72D1F7" />
+    </LinearLayout>
 
     <Spinner
         android:id="@+id/beverage_spinner"

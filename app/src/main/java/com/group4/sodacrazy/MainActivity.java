@@ -64,11 +64,9 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskListener
     }
 
 
-    /**
-     * This is for testing the punch card stuff. It can be changed to whatever menu thing we have.
-     * Just make sure that whatever button is supposed to go to the punch card screen does this
-     * method.
-     **/
+    /*
+    * These functions are for the menu bar
+    * */
     public void toPunch(View view) {
         Intent intent = new Intent(this, PunchCardActivity.class);
         startActivity(intent);
@@ -82,6 +80,10 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskListener
     public void toMenu(View view) {
         Intent intent = new Intent(this, MenuActivity.class);
         startActivity(intent);
+    }
+
+    public void toHome(View view) {
+        //do nothing
     }
 
     @Override

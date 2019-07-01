@@ -30,7 +30,11 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void toMenu(View view) {
-        Intent intent = new Intent(this, MenuActivity.class);
+        //do nothing
+    }
+
+    public void toHome(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

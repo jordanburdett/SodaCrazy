@@ -22,7 +22,7 @@
 
             <!--banner-->
             <ImageView
-                android:id="@+id/imageView1"
+                android:id="@+id/banner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
@@ -40,6 +40,30 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/homeButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#202020"
+                    android:fontFamily="@font/ultra"
+                    android:minHeight="32dip"
+                    android:onClick="toHome"
+                    android:text="@string/home"
+                    android:textColor="#FCFDFA" />
+
+                <Button
+                    android:id="@+id/menuButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#202020"
+                    android:fontFamily="@font/ultra"
+                    android:minHeight="32dip"
+                    android:onClick="toMenu"
+                    android:text="@string/menu"
+                    android:textColor="#72D1F7" />
+
+                <Button
                     android:id="@+id/punchButton"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -52,9 +76,9 @@
                     android:textColor="#FCFDFA" />
 
                 <Button
-                    android:id="@+id/button5"
+                    android:id="@+id/buildButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="#202020"
                     android:fontFamily="@font/ultra"

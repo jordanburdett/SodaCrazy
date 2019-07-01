@@ -156,6 +156,13 @@ public class PunchCardActivity extends Activity {
         }
     }
 
+    /*
+     * These functions are for the menu bar
+     * */
+    public void toPunch(View view) {
+        //do nothing
+    }
+
     public void toBuild(View view) {
         Intent intent = new Intent(this, BuildActivity.class);
         startActivity(intent);
@@ -163,6 +170,11 @@ public class PunchCardActivity extends Activity {
 
     public void toMenu(View view) {
         Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
+    }
+
+    public void toHome(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
