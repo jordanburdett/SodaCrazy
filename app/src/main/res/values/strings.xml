@@ -12,7 +12,6 @@
     <string name="build">Build</string>
     <string name="flavors">Flavors</string>
 
-
     <string-array name="beverage_types">
         <item>Select a beverage...</item>
         <item>Italian Ice</item>
