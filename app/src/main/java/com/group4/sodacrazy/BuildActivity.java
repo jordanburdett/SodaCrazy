@@ -72,6 +72,7 @@ public class BuildActivity extends AppCompatActivity {
                         onNothingSelected(parentView);
                         break;
                 }
+                bev_size.setVisibility(View.VISIBLE);
             }
 
             @Override
