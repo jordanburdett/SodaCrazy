@@ -12,7 +12,6 @@
     <string name="build">Build</string>
     <string name="flavors">Flavors</string>
 
-
     <string-array name="beverage_types">
         <item>Select a beverage...</item>
         <item>Italian Ice</item>
@@ -28,12 +27,41 @@
         <item>Steamers</item>
         <item>Chi Tea</item>
     </string-array>
-    <string-array name="beverage_size">
-        <item>Select a size...</item>
+    <string-array name="italian_drink_size">
+        <item>Small - 16oz</item>
+        <item>Medium - 24oz</item>
+        <item>Large - 32oz</item>
+        <item>X-Large - 44oz</item>
+    </string-array>
+    <string-array name="italian_ice_size">
         <item>Small</item>
-        <item>Medium</item>
+        <item>Regular</item>
         <item>Large</item>
-        <item>X-Large</item>
+    </string-array>
+    <string-array name="craze_size">
+        <item>Small (custard on top only)</item>
+        <item>Regular</item>
+        <item>Large</item>
+    </string-array>
+    <string-array name="shake_crazy_float_sizes">
+        <item>Regular - 16oz</item>
+        <item>Large - 24oz</item>
+    </string-array>
+    <string-array name="custard_shake_size">
+        <item>Regular</item>
+        <item>Large</item>
+    </string-array>
+    <string-array name="custard_size">
+        <item>Cone</item>
+        <item>Waffle Cone</item>
+        <item>Small Cup</item>
+        <item>Regular Cup</item>
+        <item>Large Cup</item>
+    </string-array>
+    <string-array name="hot_drink_sizes">
+        <item>12oz</item>
+        <item>16oz</item>
+        <item>20oz</item>
     </string-array>
     <string name="add_punch_button">Add Punch</string>
     <string name="redeem_punches_button">Redeem</string>
