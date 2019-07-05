@@ -11,7 +11,7 @@
         android:entries="@array/beverage_types" />
 
     <Spinner
-        android:id="@+id/italian_ice_size"
+        android:id="@+id/bev_size_spinner"
         android:layout_width="match_parent"
         android:layout_height="36dp"
         android:entries="@array/italian_ice_size"

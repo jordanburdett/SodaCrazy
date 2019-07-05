@@ -42,7 +42,7 @@ public class FlavorGetterFromPrefs implements Runnable {
 
         //this should put this message if on the first ever use of the app there is no network
         //I haven't tested it.
-        FlavorItem errMessage = new FlavorItem;
+        FlavorItem errMessage = new FlavorItem();
         errMessage.name = "Unable to display flavors; check your connection";
         errMessage.color = "#000000";
 

@@ -58,6 +58,11 @@
         <item>Regular Cup</item>
         <item>Large Cup</item>
     </string-array>
+    <string-array name="hot_drink_sizes">
+        <item>12oz</item>
+        <item>16oz</item>
+        <item>20oz</item>
+    </string-array>
     <string name="add_punch_button">Add Punch</string>
     <string name="redeem_punches_button">Redeem</string>
     <string name="punch_image_des">A delicious Italian Ice</string>
