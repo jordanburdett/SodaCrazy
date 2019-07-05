@@ -13,10 +13,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-public class PunchCardActivity extends Activity {
+public class PunchCardActivity extends AppCompatActivity {
 
     static final int ADD_PUNCH_REQUEST = 1;
     int punches;
