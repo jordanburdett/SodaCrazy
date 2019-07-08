@@ -17,14 +17,14 @@
         <item>Italian Ice</item>
         <item>The Craze</item>
         <item>Shake It Up</item>
-        <item>Crazy Ice Drinks</item>
+        <item>Crazy Ice Drink</item>
+        <item>Float</item>
         <item>Custard Shake</item>
         <item>Custard</item>
-        <item>Floats</item>
         <item>Italian Soda</item>
-        <item>Coffee or Espresso</item>
+        <item>Coffee</item>
         <item>Hot Chocolate</item>
-        <item>Steamers</item>
+        <item>Steamer</item>
         <item>Chi Tea</item>
     </string-array>
     <string-array name="italian_drink_size">
