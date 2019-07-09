@@ -108,9 +108,8 @@ public class BuildActivity extends AppCompatActivity {
         bev_size.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id) {
-                switch(/*string that is selected in spinner*/) {
-                    case "":
-                }
+
+
             }
 
             @Override
