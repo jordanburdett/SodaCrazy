@@ -85,4 +85,12 @@
         android:layout_height="36dp"
         android:entries="@array/italian_ice_size"
         android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/price_display"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="bottom|center"
+        android:inputType="numberDecimal" />
 </LinearLayout>
