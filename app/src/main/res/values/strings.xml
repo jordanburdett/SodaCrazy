@@ -2,18 +2,18 @@
     <string name="app_name">Soda Crazy</string>
     <string name="punchButton">PunchCard</string>
     <string name="soda_crazy_banner">Soda Crazy Banner</string>
-    <string name="build_a_drink">Build A Drink</string>
+    <string name="build_a_drink" translatable="false">Build A Drink</string>
     <string name="go_to_punch_card">Go to Punch Card</string>
     <string name="go_to_build_menu">Go To Build Menu</string>
     <string name="todo">TODO</string>
     <string name="menu">Menu</string>
     <string name="home">Home</string>
     <string name="punch">Punch</string>
-    <string name="build">Build</string>
+    <string name="build" translatable="false">Build</string>
     <string name="flavors">Flavors</string>
 
     <string-array name="beverage_types">
-        <item>Select a beverage...</item>
+        <item>Select a beverage…</item>
         <item>Italian Ice</item>
         <item>The Craze</item>
         <item>Shake It Up</item>
