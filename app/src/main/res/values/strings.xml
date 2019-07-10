@@ -69,4 +69,8 @@
     <string name="qrcode_scan_instructions">Focus on QR Code</string>
     <string name="flavor_view_des">List of flavors</string>
     <string name="seal_des">Adorable Baby Seal</string>
+    <string name="menu_list">Menu list</string>
+    <string name="drinks_list">drinks_list</string>
+    <string name="coffee_list">coffee_list</string>
+    <string name="kids_drinks">kids_drinks</string>
 </resources>

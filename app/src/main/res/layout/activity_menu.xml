@@ -94,8 +94,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                app:srcCompat="@drawable/menu_italian_ice"
-                android:contentDescription="TODO" />
+                android:contentDescription="@string/menu_list"
+                app:srcCompat="@drawable/menu_italian_ice" />
 
             <!--drinks portion of menu-->
             <ImageView
@@ -103,8 +103,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                app:srcCompat="@drawable/menu_drinks"
-                android:contentDescription="TODO" />
+                android:contentDescription="@string/drinks_list"
+                app:srcCompat="@drawable/menu_drinks" />
 
             <!--kids' drinks portion of menu-->
             <ImageView
@@ -112,8 +112,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                app:srcCompat="@drawable/menu_kids"
-                android:contentDescription="TODO" />
+                android:contentDescription="@string/kids_drinks"
+                app:srcCompat="@drawable/menu_kids" />
 
             <!--coffee and espresso portion of menu-->
             <ImageView
@@ -121,8 +121,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                app:srcCompat="@drawable/menu_coffee"
-                android:contentDescription="TODO" />
+                android:contentDescription="@string/coffee_list"
+                app:srcCompat="@drawable/menu_coffee" />
 
         </LinearLayout>
     </ScrollView>
