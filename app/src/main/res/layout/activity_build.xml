@@ -84,13 +84,22 @@
         android:layout_width="match_parent"
         android:layout_height="36dp"
         android:entries="@array/italian_ice_size"
-        android:visibility="gone" />
+        android:visibility="invisible" />
+
+    <Spinner
+        android:id="@+id/extra_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:spinnerMode="dropdown"
+        android:visibility="invisible" />
 
     <EditText
         android:id="@+id/price_display"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clickable="false"
         android:ems="10"
         android:gravity="bottom|center"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal"
+        android:longClickable="false" />
 </LinearLayout>

@@ -19,7 +19,7 @@ public class BuildActivity extends AppCompatActivity {
     // declare array adapters that will change the value of the
     // spinners in the activity
     private ArrayAdapter<CharSequence>bev_size_adapter;
-
+    private ArrayAdapter<CharSequence>extra_adapter;
     /**
      * Initial price for beverage depending on size
      */
@@ -48,6 +48,11 @@ public class BuildActivity extends AppCompatActivity {
          * beverage type in {@link beverage_type}.
          */
         final Spinner bev_size = (Spinner) findViewById(R.id.bev_size_spinner);
+
+        /**
+         * The spinner will allow for selections of extras for their drinks.
+         */
+        final Spinner extra = (Spinner) findViewById(R.id.extra_spinner);
 
         /**
          * Sets the adapter with appropriate array of strings depending on the spinner selection
@@ -182,7 +187,7 @@ public class BuildActivity extends AppCompatActivity {
                                     break;
                             }
                             break;
-                        case "Large - 240z":
+                        case "Large - 24oz":
                             switch (bev) {
                                 case "Shake It Up":
                                     base_price = 4.85;
@@ -225,6 +230,111 @@ public class BuildActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
                 base_price = 0.0;
+            }
+        });
+
+        extra.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id) {
+                String bev = beverage_type.getSelectedItem().toString();
+                if (bev != "Select a beverage...") {
+                    switch (bev) {
+                        case "Small":
+                            base_price = 2.10;
+                            break;
+                        case "Regular":
+                            switch (bev) {
+                                case "Italian Ice":
+                                    base_price = 2.60;
+                                    break;
+                                case "The Craze":
+                                    base_price = 3.85;
+                                    break;
+                                case "Custard Shake":
+                                    base_price = 4.50;
+                                    break;
+                                default:
+                                    base_price = 0.0;
+                                    break;
+                            }
+                            break;
+                        case "Large":
+                            switch (bev) {
+                                case "Italian Ice":
+                                    base_price = 3.35;
+                                    break;
+                                case "The Craze":
+                                    base_price = 4.35;
+                                    break;
+                                case "Custard Shake":
+                                    base_price = 5.00;
+                                    break;
+                                default:
+                                    base_price = 0.0;
+                                    break;
+                            }
+                            break;
+                        case "Small (custard on top only)":
+                            base_price = 3.15;
+                            break;
+                        case "Regular - 16oz":
+                            switch (bev) {
+                                case "Shake It Up":
+                                    base_price = 4.35;
+                                    break;
+                                case "Crazy Ice Drink":
+                                    base_price = 4.35;
+                                    break;
+                                case "Float":
+                                    base_price = 3.25;
+                                    break;
+                                default:
+                                    base_price = 0.0;
+                                    break;
+                            }
+                            break;
+                        case "Large - 24oz":
+                            switch (bev) {
+                                case "Shake It Up":
+                                    base_price = 4.85;
+                                    break;
+                                case "Crazy Ice Drink":
+                                    base_price = 4.85;
+                                    break;
+                                case "Float":
+                                    base_price = 3.75;
+                                    break;
+                                default:
+                                    base_price = 0.0;
+                                    break;
+                            }
+                            break;
+                        case "Cone":
+                            base_price = 2.25;
+                            break;
+                        case "Waffle Cone":
+                            base_price = 3.25;
+                            break;
+                        case "Small Cup":
+                            base_price = 2.75;
+                            break;
+                        case "Regular Cup":
+                            base_price = 3.25;
+                            break;
+                        case "Large Cup":
+                            base_price = 4.00;
+                            break;
+                        default:
+                            base_price = 0.0;
+                            break;
+
+                    }
+                }
+                updatePrice();
+            }
+
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
     }

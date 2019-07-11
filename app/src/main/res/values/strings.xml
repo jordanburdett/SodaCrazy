@@ -63,6 +63,25 @@
         <item>16oz</item>
         <item>20oz</item>
     </string-array>
+    <string-array name="cold_extras">
+        <item>Mix in - $.75</item>
+        <item>Caramel, Chocolate or Hot Fudge - $.50</item>
+    </string-array>
+    <string-array name="shake_it_extra">
+        <item>Flavor Shot - $.25</item>
+        <item>Mix- in - $.75</item>
+        <item>Caramel, Chocolate or Hot Fudge - $.50</item>
+    </string-array>
+    <string-array name="italian_soda_extra">
+        <item>Flavor Shot - $.25</item>
+        <item>Puree Shot - $.50</item>
+        <item>Custard Mix in - $1</item>
+    </string-array>
+    <string-array name="hot_extras">
+        <item>Additional Flavor Shot - $.60</item>
+        <item>Sub Half \u0026 Half/Almond/Soy milk - $.75</item>
+        <item>Extra Espresso Shot - $.75</item>
+    </string-array>
     <string name="add_punch_button">Add Punch</string>
     <string name="redeem_punches_button">Redeem</string>
     <string name="punch_image_des">A delicious Italian Ice</string>
