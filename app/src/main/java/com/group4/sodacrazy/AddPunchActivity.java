@@ -59,8 +59,9 @@ public class AddPunchActivity extends AppCompatActivity {
 
         //give details about what we want from our camera source
         cameraSource = new CameraSource.Builder(this, detector)
-                .setRequestedPreviewSize(640, 480)
+                .setRequestedPreviewSize(2000, 2280)
                 .setFacing(CameraSource.CAMERA_FACING_BACK)
+                .setAutoFocusEnabled(true)
                 .build();
 
         //create our SurfaceView
