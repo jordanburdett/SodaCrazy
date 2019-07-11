@@ -62,6 +62,7 @@ public class AddPunchActivity extends AppCompatActivity {
                 .setRequestedPreviewSize(2000, 2280)
                 .setFacing(CameraSource.CAMERA_FACING_BACK)
                 .setAutoFocusEnabled(true)
+                .setRequestedFps(120f)
                 .build();
 
         //create our SurfaceView
