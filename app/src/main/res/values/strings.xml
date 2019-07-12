@@ -98,4 +98,5 @@
     <string name="kids_drinks">kids_drinks</string>
     <string name="size_prompt">Select Size of Beverage</string>
     <string name="extra_prompt">Select Extra for Beverage</string>
+    <string name="total">Total:</string>
 </resources>
