@@ -84,12 +84,14 @@
         android:layout_width="match_parent"
         android:layout_height="36dp"
         android:entries="@array/italian_ice_size"
+        android:prompt="@string/size_prompt"
         android:visibility="invisible" />
 
     <Spinner
         android:id="@+id/extra_spinner"
         android:layout_width="match_parent"
         android:layout_height="36dp"
+        android:prompt="@string/extra_prompt"
         android:spinnerMode="dropdown"
         android:visibility="invisible" />
 
@@ -101,5 +103,6 @@
         android:ems="10"
         android:gravity="bottom|center"
         android:inputType="numberDecimal"
-        android:longClickable="false" />
+        android:longClickable="false"
+        android:importantForAutofill="no" />
 </LinearLayout>

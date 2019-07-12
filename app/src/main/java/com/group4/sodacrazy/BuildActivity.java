@@ -70,11 +70,17 @@ public class BuildActivity extends AppCompatActivity {
                         bev_size_adapter = ArrayAdapter.createFromResource(parentView.getContext(), R.array.italian_ice_size, android.R.layout.simple_spinner_dropdown_item);
                         bev_size.setAdapter(bev_size_adapter);
                         bev_size.setVisibility(View.VISIBLE);
+                        extra_adapter = ArrayAdapter.createFromResource(parentView.getContext(), R.array.cold_extras, android.R.layout.simple_spinner_dropdown_item);
+                        extra.setAdapter(extra_adapter);
+                        extra.setVisibility(View.VISIBLE);
                         break;
                     case  2: // The Craze
                         bev_size_adapter = ArrayAdapter.createFromResource(parentView.getContext(), R.array.craze_size, android.R.layout.simple_spinner_dropdown_item);
                         bev_size.setAdapter(bev_size_adapter);
                         bev_size.setVisibility(View.VISIBLE);
+                        extra_adapter = ArrayAdapter.createFromResource(parentView.getContext(), R.array.cold_extras, android.R.layout.simple_spinner_dropdown_item);
+                        extra.setAdapter(extra_adapter);
+                        extra.setVisibility(View.VISIBLE);
                         break;
                     case  3: // Shake It Up
                     case  4: // Crazy Ice Drink
@@ -111,6 +117,45 @@ public class BuildActivity extends AppCompatActivity {
                         base_price = 0;
                         break;
                 }
+                // Switch for the extra spinner to set appropriate extra options
+                switch (pos) {
+                    case  1:    // Italian Ice
+                    case  2:    // The Craze
+                        extra_adapter = ArrayAdapter.createFromResource(parentView.getContext(), R.array.cold_extras, android.R.layout.simple_spinner_dropdown_item);
+                        extra.setAdapter(extra_adapter);
+                        extra.setVisibility(View.VISIBLE);
+                        break;
+                    case  3:    // Shake It Up
+                        extra_adapter = ArrayAdapter.createFromResource(parentView.getContext(), R.array.shake_it_extra, android.R.layout.simple_spinner_dropdown_item);
+                        extra.setAdapter(extra_adapter);
+                        extra.setVisibility(View.VISIBLE);
+                        break;
+                    case  4:    // Crazy Ice Drink
+                    case  5:    // Float
+                    case  6:    // Custard Shake
+                    case  7:    // Custard
+                        extra_adapter = ArrayAdapter.createFromResource(parentView.getContext(), R.array.cold_extras, android.R.layout.simple_spinner_dropdown_item);
+                        extra.setAdapter(extra_adapter);
+                        extra.setVisibility(View.VISIBLE);
+                        break;
+                    case  8:    // Italian Soda
+                        extra_adapter = ArrayAdapter.createFromResource(parentView.getContext(), R.array.italian_soda_extra, android.R.layout.simple_spinner_dropdown_item);
+                        extra.setAdapter(extra_adapter);
+                        extra.setVisibility(View.VISIBLE);
+                        break;
+                    case  9:    // Coffee
+                    case 10:    // Hot Chocolate
+                    case 11:    // Steamer
+                    case 12:    // Chi Tea
+                        extra_adapter = ArrayAdapter.createFromResource(parentView.getContext(), R.array.hot_extras, android.R.layout.simple_spinner_dropdown_item);
+                        extra.setAdapter(extra_adapter);
+                        extra.setVisibility(View.VISIBLE);
+                        break;
+                    default:
+                        extra.setVisibility(View.INVISIBLE);
+                        extra_price = 0.00;
+                        break;
+                }
                 updatePrice();
             }
 
@@ -131,7 +176,7 @@ public class BuildActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id) {
                 String option = bev_size.getSelectedItem().toString();
                 String bev = beverage_type.getSelectedItem().toString();
-                if (bev != "Select a beverage...") {
+                if (bev_size.getVisibility() != View.INVISIBLE) {
                     switch (option) {
                         case "Small":
                             base_price = 2.10;
@@ -203,6 +248,18 @@ public class BuildActivity extends AppCompatActivity {
                                     break;
                             }
                             break;
+                        case "Small - 16oz":
+                            base_price = 1.25;
+                            break;
+                        case "Medium - 24oz":
+                            base_price = 1.50;
+                            break;
+                        case "Large - 32oz":
+                            base_price = 1.75;
+                            break;
+                        case "X-Large - 44oz":
+                            base_price = 2.00;
+                            break;
                         case "Cone":
                             base_price = 2.25;
                             break;
@@ -224,6 +281,9 @@ public class BuildActivity extends AppCompatActivity {
 
                     }
                 }
+                else {
+                    base_price = 0.00;
+                }
                 updatePrice();
             }
 
@@ -237,98 +297,38 @@ public class BuildActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id) {
                 String bev = beverage_type.getSelectedItem().toString();
-                if (bev != "Select a beverage...") {
-                    switch (bev) {
-                        case "Small":
-                            base_price = 2.10;
-                            break;
-                        case "Regular":
-                            switch (bev) {
-                                case "Italian Ice":
-                                    base_price = 2.60;
-                                    break;
-                                case "The Craze":
-                                    base_price = 3.85;
-                                    break;
-                                case "Custard Shake":
-                                    base_price = 4.50;
-                                    break;
-                                default:
-                                    base_price = 0.0;
-                                    break;
-                            }
-                            break;
-                        case "Large":
-                            switch (bev) {
-                                case "Italian Ice":
-                                    base_price = 3.35;
-                                    break;
-                                case "The Craze":
-                                    base_price = 4.35;
-                                    break;
-                                case "Custard Shake":
-                                    base_price = 5.00;
-                                    break;
-                                default:
-                                    base_price = 0.0;
-                                    break;
-                            }
-                            break;
-                        case "Small (custard on top only)":
-                            base_price = 3.15;
-                            break;
-                        case "Regular - 16oz":
-                            switch (bev) {
-                                case "Shake It Up":
-                                    base_price = 4.35;
-                                    break;
-                                case "Crazy Ice Drink":
-                                    base_price = 4.35;
-                                    break;
-                                case "Float":
-                                    base_price = 3.25;
-                                    break;
-                                default:
-                                    base_price = 0.0;
-                                    break;
-                            }
-                            break;
-                        case "Large - 24oz":
-                            switch (bev) {
-                                case "Shake It Up":
-                                    base_price = 4.85;
-                                    break;
-                                case "Crazy Ice Drink":
-                                    base_price = 4.85;
-                                    break;
-                                case "Float":
-                                    base_price = 3.75;
-                                    break;
-                                default:
-                                    base_price = 0.0;
-                                    break;
-                            }
-                            break;
-                        case "Cone":
-                            base_price = 2.25;
-                            break;
-                        case "Waffle Cone":
-                            base_price = 3.25;
-                            break;
-                        case "Small Cup":
-                            base_price = 2.75;
-                            break;
-                        case "Regular Cup":
-                            base_price = 3.25;
-                            break;
-                        case "Large Cup":
-                            base_price = 4.00;
-                            break;
-                        default:
-                            base_price = 0.0;
-                            break;
-
-                    }
+                String ex = extra.getSelectedItem().toString();
+                switch (ex) {
+                    case "None":
+                        extra_price = 0.00;
+                        break;
+                    case "Mix in - $.75":
+                        extra_price = 0.75;
+                        break;
+                    case "Caramel, Chocolate or Hot Fudge - $.50":
+                        extra_price = 0.50;
+                        break;
+                    case "Flavor Shot - $.25":
+                        extra_price = 0.25;
+                        break;
+                    case "Puree Shot - $.50":
+                        extra_price = 0.50;
+                        break;
+                    case "Custard Mix in - $1":
+                        extra_price = 1.00;
+                        break;
+                    case "Additional Flavor Shot - $60":
+                        extra_price = 0.60;
+                        break;
+                    case "Sub Half \u0026 Half/Almond/Soy milk - $.75":
+                        extra_price = 0.75;
+                        break;
+                    case "Extra Espresso Shot - $.75":
+                        extra_price = 0.75;
+                        break;
+                    default:
+                        extra_price = 0.00;
+                        break;
                 }
                 updatePrice();
             }

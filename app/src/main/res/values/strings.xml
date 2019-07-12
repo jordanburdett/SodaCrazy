@@ -64,20 +64,24 @@
         <item>20oz</item>
     </string-array>
     <string-array name="cold_extras">
+        <item>None</item>
         <item>Mix in - $.75</item>
         <item>Caramel, Chocolate or Hot Fudge - $.50</item>
     </string-array>
     <string-array name="shake_it_extra">
+        <item>None</item>
         <item>Flavor Shot - $.25</item>
-        <item>Mix- in - $.75</item>
+        <item>Mix in - $.75</item>
         <item>Caramel, Chocolate or Hot Fudge - $.50</item>
     </string-array>
     <string-array name="italian_soda_extra">
+        <item>None</item>
         <item>Flavor Shot - $.25</item>
         <item>Puree Shot - $.50</item>
         <item>Custard Mix in - $1</item>
     </string-array>
     <string-array name="hot_extras">
+        <item>None</item>
         <item>Additional Flavor Shot - $.60</item>
         <item>Sub Half \u0026 Half/Almond/Soy milk - $.75</item>
         <item>Extra Espresso Shot - $.75</item>
@@ -92,4 +96,6 @@
     <string name="drinks_list">drinks_list</string>
     <string name="coffee_list">coffee_list</string>
     <string name="kids_drinks">kids_drinks</string>
+    <string name="size_prompt">Select Size of Beverage</string>
+    <string name="extra_prompt">Select Extra for Beverage</string>
 </resources>
