@@ -17,8 +17,6 @@ import java.util.List;
  */
 public class FlavorAdapter extends RecyclerView.Adapter<FlavorAdapter.ViewHolder> {
 
-    // Currently just holds a list of strings..
-    // this will eventually be a list of flavors
     private List<FlavorItem> data;
 
     /**

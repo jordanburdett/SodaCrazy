@@ -78,25 +78,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="8dp"
-        android:background="#000000"
-        android:fontFamily="@font/ultra"
-        android:onClick="punchCard"
-        android:paddingLeft="35dp"
-        android:paddingRight="35dp"
-        android:text="@string/add_punch_button"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.252"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -108,23 +89,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="#000000"
-        android:fontFamily="@font/ultra"
-        android:onClick="redeem"
-        android:paddingLeft="35dp"
-        android:paddingRight="35dp"
-        android:text="@string/redeem_punches_button"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button" />
+
 
     <ImageView
         android:id="@+id/imageView"
@@ -148,9 +113,60 @@
         android:adjustViewBounds="true"
         android:contentDescription="@string/punch_image_des"
         android:src="@drawable/ice0010"
-        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cupcake">
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:fontFamily="@font/ultra"
+            android:onClick="punchCard"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="@string/add_punch_button"
+            android:textColor="#FFFFFF"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="602dp" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:fontFamily="@font/ultra"
+            android:onClick="redeem"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="@string/redeem_punches_button"
+            android:textColor="#FFFFFF"
+            tools:layout_editor_absoluteX="215dp"
+            tools:layout_editor_absoluteY="602dp" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
